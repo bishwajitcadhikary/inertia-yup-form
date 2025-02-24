@@ -5,13 +5,13 @@ A utility package that combines Inertia.js forms with Yup validation for Vue 3 a
 ## Installation
 
 ```bash
-npm install inertia-yup-form
+npm install @kindigi/inertia-yup-form
 ```
 
 ## Usage
 
 ```typescript
-import { useForm } from '@your-scope/inertia-yup-form';
+import { useForm } from '@kindigi/inertia-yup-form';
 import * as yup from 'yup';
 
 // Define your form schema

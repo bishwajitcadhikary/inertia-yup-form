@@ -1,5 +1,5 @@
 {
-  "name": "@kindigi/inertia-yup-form",
+  "name": "kindigi/inertia-yup-form",
   "version": "1.0.0",
   "description": "A form validation utility combining Inertia.js forms with Yup validation",
   "main": "dist/index.js",

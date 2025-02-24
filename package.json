@@ -1,0 +1,37 @@
+{
+  "name": "inertia-yup-form",
+  "version": "1.0.0",
+  "description": "A form validation utility combining Inertia.js forms with Yup validation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "inertia",
+    "yup",
+    "form",
+    "validation",
+    "vue"
+  ],
+  "peerDependencies": {
+    "@inertiajs/vue3": "^1.0.0",
+    "vue": "^3.0.0",
+    "yup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.6"
+  }
+}

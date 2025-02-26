@@ -8,9 +8,11 @@ export const useForm = <T extends FormDataType>(
     formData: T,
     options?: ValidationFormOptions,
 ): ValidationForm<T> => {
+    // The signature for useForm has changed in v2
+    // It now accepts either (data) or (rememberKey, data)
     const inertiaForm = options?.rememberKey
-        ? inertiaUseForm<T>(options.rememberKey, formData)
-        : inertiaUseForm<T>(formData);
+        ? inertiaUseForm(options.rememberKey, formData)
+        : inertiaUseForm(formData);
 
     type FormType = typeof inertiaForm;
     const data = computed(() => inertiaForm.data());
@@ -23,19 +25,24 @@ export const useForm = <T extends FormDataType>(
 
             try {
                 fieldSchema.validateSync({ [key]: value }, { abortEarly: false });
-                delete inertiaForm.errors[key];
+                // In v2, clearErrors() is now used instead of directly modifying the errors object
+                inertiaForm.clearErrors(key);
             } catch (err) {
                 if (err instanceof Error && 'inner' in err) {
                     const errors = parseErrors<T>(err as any);
-                    inertiaForm.setError({ ...inertiaForm.errors, ...errors });
+                    // The setError method now accepts a key and value pair or an object of errors
+                    if (errors[key]) {
+                        inertiaForm.setError(key, errors[key]);
+                    }
                 }
             }
         });
     });
 
-    return new Proxy<FormType & { errors: Record<string, string | undefined> }>(inertiaForm, {
+    return new Proxy<FormType>(inertiaForm, {
         get: (target, prop) => {
             if (prop === 'submit') {
+                // Clear all existing errors before validation
                 inertiaForm.clearErrors();
 
                 try {
@@ -45,15 +52,16 @@ export const useForm = <T extends FormDataType>(
                 } catch (err) {
                     if (err instanceof Error && 'inner' in err) {
                         const errors = parseErrors<T>(err as any);
+                        // In v2, setError can accept an object of errors
                         inertiaForm.setError(errors);
                         return () => {
-                            // Do nothing
+                            // Do nothing - just prevent form submission
                         };
                     }
                 }
             }
 
-            return target[prop.toString()];
+            return target[prop as keyof typeof target];
         },
     });
 };

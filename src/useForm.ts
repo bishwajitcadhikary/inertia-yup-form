@@ -1,9 +1,9 @@
 import { useForm as inertiaUseForm } from '@inertiajs/vue3';
 import { computed, watch } from 'vue';
-import type { ValidationForm, ValidationFormOptions, YupSchema } from './types';
+import type { ValidationForm, ValidationFormOptions, YupSchema, FormDataType } from './types';
 import { parseErrors } from './utils/parseErrors';
 
-export const useForm = <T extends Record<string, unknown>>(
+export const useForm = <T extends FormDataType>(
     yupSchema: YupSchema<T>,
     formData: T,
     options?: ValidationFormOptions,

@@ -111,8 +111,6 @@ yup.setLocale({
 export default yup;
 ```
 
-```typescript
-
 ## Features
 
 - Real-time client-side validation using Yup schemas

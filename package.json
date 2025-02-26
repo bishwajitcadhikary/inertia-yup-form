@@ -1,6 +1,6 @@
 {
   "name": "@kindigi/inertia-yup-form",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A form validation utility combining Inertia.js forms with Yup validation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     "vue"
   ],
   "peerDependencies": {
-    "@inertiajs/vue3": "^1.0.0",
+    "@inertiajs/vue3": "^2.0.3",
     "vue": "^3.0.0",
     "yup": "^1.0.0"
   },

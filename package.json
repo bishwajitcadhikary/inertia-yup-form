@@ -1,6 +1,6 @@
 {
   "name": "@kindigi/inertia-yup-form",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A form validation utility combining Inertia.js forms with Yup validation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,6 +12,15 @@
     "test": "vitest",
     "lint": "eslint src/**/*.ts",
     "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bishwajitcadhikary/inertia-yup-form"
+  },
+  "author": {
+    "name": "Bishwajit Cadhikary",
+    "email": "bishwajitcadhikary@gmail.com",
+    "url": "https://bishwajitadhikary.com"
   },
   "keywords": [
     "inertia",
